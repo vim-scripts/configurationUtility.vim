@@ -1,0 +1,78 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=4383
+
+Name: configurationUtility.vim
+Version: 1.0
+Author: Alexandre Viau (alexandreviau@gmail.com)
+
+NOTE: The configurationUtility.vim plugin is fully functional as it is, but I will not continue its development because I now use and develop the basicXmlParser.vim plugin to load and save data to configuration files. One advantage of the basicXmlParser plugin is that it offers unlimited levels of subitems of data but the configurationUtility offers only 2, but in many case for configuration files, 2 levels are enough. Here is the link to the basicXmlParser plugin http://www.vim.org/scripts/script.php?script_id=4380
+
+Description: Save and load configuration files in a dictionary format containing sections and items. I wanted to have a way to save and load configuration data with items and sections like .ini files on Windows, and I found that it could be possible using dictionaries.
+The functions in this plugin are used to create and load a file like this which contains a large dictionary that contains items and one level of subitems called sections.
+
+Here are the available functions:
+g:CfgLoadFromFile(file) 
+g:CfgSaveToFile(cfg, file) 
+g:CfgGetItem(dict, itemKey) 
+g:CfgGetItemKey(dict, itemValue) 
+g:CfgRemoveItem(dict, itemKey) 
+g:CfgSetItem(dict, itemKey, itemValue) 
+g:CfgGetSection(dict, sectionKey) 
+g:CfgSetSection(dict, sectionKey, sectionvalue) 
+g:CfgSectionRemove(dict, sectionKey) 
+g:CfgSectionGetItem(dict, sectionKey, itemKey) 
+g:CfgSectionGetItemKey(dict, itemValue) 
+g:CfgSectionRemoveItem(dict, sectionKey, itemKey) 
+g:CfgSectionSetItem(dict, sectionKey, itemKey, itemValue) 
+g:CfgSectionExists(dict, sectionKey) 
+
+The sections themselves contains items. So at the first level there are items and sections, and in the sections there are items only.
+For example here items would be 'history', 'favorites', 'lastPath'. The sections would be for example 'selectedFiles', 'marks', and items in the sections in this example would be 'B', 'C', etc...  
+let g:Cfg = {'selectedFiles': {}
+\, 'marks': {'A': 'C:\Usb\i_green\apps'
+\, 'B': 'C:\Users\User\Desktop'
+\, 'C': 'C:&#039
+\, 'D': 'C:\Usb\i_green\data'
+\, 'F': 'C:/Windows/Microsoft.NET/Framework64/v4.0.30319'
+\, 'G': 'G:&#039
+\, 'H': 'C:\Users'
+\, '2': 'C:/Usb/iomega/Video'
+\, 'M': 'C:\ProgramData\Microsoft\Windows\Start Menu\Programs'
+\, 'P': 'C:\vim\vim73\plugin'
+\, 'S': 'C:\Users\User\Documents\Shortcuts'
+\, 'T': 'C:\Temp'
+\, 'U': 'C:\Usb'
+\, 'V': 'C:\vim\vim73'
+\, 'W': 'C:/Usb/z_white'
+\, '3': 'C:/Temp/a1'
+\, 'a': 'C:\Usb\z_white\Apps\Portable'
+\, 'b': 'C:\Users\User\Desktop'
+\, 'c': 'C:\Usb\z_white\Apps\Portable\CmdUtils'
+\, 'd': 'C:\Users\User\Documents'
+\, 'e': 'C:/Users/User/Documents/emails'
+\, 'f': 'C:/Windows/Microsoft.NET/Framework64/v4.0.30319'
+\, 'g': 'G:&#039
+\, 'h': 'C:\Users\User'
+\, 'i': 'C:\Usb\i_green'
+\, 'm': 'C:/Users/User/AppData/Roaming/Microsoft/Windows/Start Menu/Programs'
+\, 'n': 'C:/Usb/i_green/data/Notes'
+\, 'p': 'C:\Usb\i_green\data\Projects'
+\, 'r': 'C:\repository'
+\, 's': 'C:\Users\User\Documents\Shortcuts'
+\, 't': 'C:\Temp'
+\, 'u': 'C:\Usb'
+\, 'v': 'C:\vim\vim73'
+\, 'w': 'C:\Windows'
+\, '8': 'C:/HP'
+\, '9': 'C:/HP/support'
+\, 'z': 'C:/Windows/Logs'}
+\, 'history': '[C:/Usb/z_white/Data/] [C:/Usb/z_white/Data/] [C:/Temp/allo] [C:/Temp/allo/a5/zzz/wwwwwwww]'
+\, 'favorites': '[C:/cygwin] [C:/cygwin/usr/share/vim/vim73]'
+\, 'cursorPos': {'C:/Temp/a1': '..'
+\, 'C:/Temp/a2': 'bclear.vim'
+\, 'C:/Temp/a3': '.'
+\, 'C:/Temp/a5': '..'
+\, 'C:/ProgramData/Microsoft/Windows/Start Menu/Programs/Security and Protection': '..'
+\, 'C:/Usb/iomega/Documents/Emails': 'John_bak.dbx'
+\, 'C:/Usb/iomega/Documents/Orthodox (faire menage)/Early Church Fathers v.2.0': 'ecf02.hlp'}
+\, 'lastPath': 'C:/Usb/'}
+
